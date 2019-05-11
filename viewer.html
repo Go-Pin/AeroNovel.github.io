@@ -20,6 +20,7 @@
         var main = document.getElementById("main");
         log.innerHTML = title;
         var TOC;
+        var loader;
         Load();//Load->RenderTOC->LoadContent
         function RenderTOC() {
             if (loader.status == 200) {
@@ -29,7 +30,7 @@
         }
         function Load() {
             //Load TOC
-            var loader = new XMLHttpRequest();
+            loader = new XMLHttpRequest();
             loader.open('GET', 'Novels/' + title + '/contents.txt', true);
             loader.onreadystatechange = RenderTOC;
             loader.send(null);
