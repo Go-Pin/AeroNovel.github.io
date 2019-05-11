@@ -6,21 +6,23 @@
     <style>
     #main
     {
-        line-height:1.4;width:90%;margin:5%;font-size:10px;
+        line-height:1.4;width:100%;margin:0;font-size:20px;
     }
-    #main->p
+    #main>p
     {
         margin: 0;
         text-indent:2em;
     }
-    .draeout
+    #main>.drawout
     {
+        margin: 0;
         text-indent:1em;
     }
     </style>
 </head>
 
 <body>
+    iphone:20px
     <p id="log"></p>
     <div id="main" ></div>
     <script type="text/javascript">
@@ -69,7 +71,6 @@
         }
         function LoadContent() {
             TOC.forEach(ele => {
-                console.log(ele.indexOf(n));
                 if (ele.indexOf(n)==0) {
                     loader = new XMLHttpRequest();
                     loader.open('GET', 'Novels/'+title+"/" + ele, true);
