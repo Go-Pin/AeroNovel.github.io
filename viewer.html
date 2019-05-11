@@ -64,9 +64,9 @@
                     var cont = loader.responseText.split("\n");
                     var code = "";
                     cont.forEach(ele => {
-                        var c = ele;
+                        var c = ele.replace('\r','');
                         var cla = "";
-                        if (c.length == 0) c = "<br/>";
+                        if (c.length == 0) c = "<br>";
                         if (c[0] == "「" || c[0] == "『" || c[0] == "（") cla += " drawout";
                         code += "<p class='" + cla + "'>" + ele + "</p>";
                     });
