@@ -105,17 +105,16 @@
         var notes=new Array();
         function EncodeNovel(c)
         {
-            var pos=0;
             var reg=/\[(.*?)\]/gi;
             var r=c;
             while(pos<c.length)
             {
-                var match=reg.exec(c,pos);
+                var match=reg.exec(r);
                 if(match==null)break;
                 switch(match[1])
                 {
                     case "note":
-                    r=r.replace(match[0],"<sup ontouchstart='Footnote("+note_count+")'>[注]</sup>");
+                    r=r.replace(match[0],"<a ontouchstart='Footnote("+note_count+")'>[注]</a>");
                     note_count++;
                     break;
                     default:
@@ -123,7 +122,6 @@
                     notes.push(match[1]);
                     break;
                 }
-                pos=match.lastIndex;
             }
             return r;
         }
