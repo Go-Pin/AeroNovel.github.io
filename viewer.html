@@ -72,7 +72,7 @@
                     var iPad = ua.match(/(iPad).*OS\s([\d_]+)/),
                         iPhone = !iPad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
                         isAndroid = ua.match(/(Android)\s+([\d.]+)/),
-                        isMobile = isIphone || isAndroid;
+                        isMobile = iPhone || isAndroid;
                     if (isMobile) {
                         log.innerHTML+="Mobile";
                         main.style.fontSize = "5%";
