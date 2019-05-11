@@ -70,12 +70,12 @@
                     main.innerHTML = code;
                     var ua = navigator.userAgent;
                     var iPad = ua.match(/(iPad).*OS\s([\d_]+)/),
-                        iPhone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                        iPhone = !iPad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
                         isAndroid = ua.match(/(Android)\s+([\d.]+)/),
                         isMobile = isIphone || isAndroid;
                     if (isMobile) {
                         log.innerHTML+="Mobile";
-                        main.style.fontSize = "40px";
+                        main.style.fontSize = "5%";
                     }
                 }
         }
