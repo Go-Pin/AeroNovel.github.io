@@ -24,7 +24,7 @@
         Load();//Load->RenderTOC->LoadContent
         function RenderTOC() {
             if (loader.status == 200) {
-                TOC = loader.responseText.split("\r\n");
+                TOC = loader.responseText.split("\n");
                 LoadContent();
             }
         }
@@ -37,7 +37,7 @@
         }
         function RenderContent() {
             if (loader.status == 200) {
-                var cont = loader.responseText.split("\r\n");
+                var cont = loader.responseText.split("\n");
                 var code = "";
                 cont.forEach(ele => {
                     code += "<p>" + ele + "</p>";
