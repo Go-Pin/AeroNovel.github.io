@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-control" content="no-cache">
     <title>Aero Novel</title>
     <style>
         body{background: antiquewhite;}
@@ -64,6 +65,7 @@
                     var code = "";
                     cont.forEach(ele => {
                         var c = ele.replace('\r','');
+                        c=EncodeNovel(c);
                         var cla = "";
                         if (c.length == 0) c = "<br>";
                         if (c[0] == "「" || c[0] == "『" || c[0] == "（") cla += " drawout";
@@ -98,6 +100,35 @@
             });
 
 
+        }
+        var note_count=0;
+        var notes=new Array();
+        function EncodeNovel(c)
+        {
+            var pos=0;
+            var reg=/\[(.*?)\]/gi;
+            while(pos<c.length)
+            {
+                var match=reg.exec(c,pos);
+                if(match.length>1)
+                switch(match[1])
+                {
+                    case "note":
+                    c=c.replace(match[0],"<sup ontouchstart='Footnote("+note_count+")'>[注]</sup>");
+                    note_count++;
+                    break;
+                    default:
+                    c=c.replace(match[0],"");
+                    notes.push(match[1]);
+                    ;
+                }
+                pos=match.lastIndex;
+            }
+            return c;
+        }
+        function Footnote(a)
+        {
+            alert(notes(a));
         }
     </script>
 </body>
