@@ -107,7 +107,7 @@
         {
             var reg=/\[(.*?)\]/gi;
             var r=c;
-            while(pos<c.length)
+            while(true)
             {
                 var match=reg.exec(r);
                 if(match==null)break;
