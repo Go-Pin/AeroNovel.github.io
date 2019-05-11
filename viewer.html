@@ -52,7 +52,7 @@
             TOC.forEach(ele => {
                 console.log(ele.indexOf(n));
                 if (ele.indexOf(n)==0) {
-                    var loader = new XMLHttpRequest();
+                    loader = new XMLHttpRequest();
                     loader.open('GET', 'Novels/'+title+"/" + ele, true);
                     loader.onreadystatechange = RenderContent;
                     loader.send(null);
