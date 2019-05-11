@@ -23,6 +23,7 @@
         var loader;
         Load();//Load->RenderTOC->LoadContent
         function RenderTOC() {
+            if(loader.readyState==4)
             if (loader.status == 200) {
                 TOC = loader.responseText.split("\n");
                 LoadContent();
@@ -36,6 +37,7 @@
             loader.send(null);
         }
         function RenderContent() {
+            if(loader.readyState==4)
             if (loader.status == 200) {
                 var cont = loader.responseText.split("\n");
                 var code = "";
@@ -48,7 +50,7 @@
         }
         function LoadContent() {
             TOC.forEach(ele => {
-                console.log(ele);
+                console.log(ele.indexOf(n));
                 if (ele.indexOf(n)==0) {
                     var loader = new XMLHttpRequest();
                     loader.open('GET', 'Novels/'+title+"/" + ele, true);
