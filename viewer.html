@@ -21,10 +21,13 @@ log.innerHTML=title+n;
 var loader=new XMLHttpRequest();
 function RenderContent()
 {
+    console.log("changed");
      main.innerHTML=loader.responseText;
+
 }
-loader.open('get','Novels/三角距离无限为零 3/contents.txt');
+loader.open('GET','Novels/三角距离无限为零 3/contents.txt',true);
 loader.onreadystatechange=RenderContent;
+loader.send(null);
 </script>
 </body>
 
