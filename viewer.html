@@ -48,6 +48,7 @@
         }
         function LoadContent() {
             TOC.forEach(ele => {
+                console.log(ele);
                 if (ele.indexOf(n)==0) {
                     var loader = new XMLHttpRequest();
                     loader.open('GET', 'Novels/'+title+"/" + ele, true);
