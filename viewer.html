@@ -1,34 +1,64 @@
 <html>
+
 <head>
     <meta charset="utf-8">
-<title>Aero Novel</title>
+    <title>Aero Novel</title>
 </head>
-<body>
-<p id="log"></p>
-<div id="main"></div>
-<script type="text/javascript">
-function GetQueryString(name)
-{
-     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);
-     if(r!=null)return  decodeURIComponent(r[2]); return null;
-}
-var title=GetQueryString("t");
-var n=GetQueryString("n");
-var log=document.getElementById("log");
-var main=document.getElementById("main");
-log.innerHTML=title+n;
-var loader=new XMLHttpRequest();
-function RenderContent()
-{
-    console.log("changed");
-     main.innerHTML=loader.responseText;
 
-}
-loader.open('GET','Novels/三角距离无限为零 3/contents.txt',true);
-loader.onreadystatechange=RenderContent;
-loader.send(null);
-</script>
+<body>
+    <p id="log"></p>
+    <div id="main"></div>
+    <script type="text/javascript">
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURIComponent(r[2]); return null;
+        }
+        var title = GetQueryString("t");
+        var n = GetQueryString("n");
+        var log = document.getElementById("log");
+        var main = document.getElementById("main");
+        log.innerHTML = title;
+        var TOC;
+        Load();//Load->RenderTOC->LoadContent
+        function RenderTOC() {
+            if (loader.status == 200) {
+                TOC = loader.responseText.split("\r\n");
+                LoadContent();
+            }
+        }
+        function Load() {
+            //Load TOC
+            var loader = new XMLHttpRequest();
+            loader.open('GET', 'Novels/' + title + '/contents.txt', true);
+            loader.onreadystatechange = RenderTOC;
+            loader.send(null);
+        }
+        function RenderContent() {
+            if (loader.status == 200) {
+                var cont = loader.responseText.split("\r\n");
+                var code = "";
+                cont.forEach(ele => {
+                    code += "<p>" + ele + "</p>";
+                });
+                main.innerHTML = code;
+
+            }
+        }
+        function LoadContent() {
+            TOC.forEach(ele => {
+                if (ele.indexOf(n)) {
+                    var loader = new XMLHttpRequest();
+                    loader.open('GET', 'Novels/' + ele, true);
+                    loader.onreadystatechange = RenderContent;
+                    loader.send(null);
+                    return;
+                }
+            });
+
+
+        }
+    </script>
 </body>
 
 </html>
