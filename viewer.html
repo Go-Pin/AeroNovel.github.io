@@ -107,6 +107,7 @@
         {
             var pos=0;
             var reg=/\[(.*?)\]/gi;
+            var r=c;
             while(pos<c.length)
             {
                 var match=reg.exec(c,pos);
@@ -114,11 +115,11 @@
                 switch(match[1])
                 {
                     case "note":
-                    c=c.replace(match[0],"<sup ontouchstart='Footnote("+note_count+")'>[注]</sup>");
+                    r=r.replace(match[0],"<sup ontouchstart='Footnote("+note_count+")'>[注]</sup>");
                     note_count++;
                     break;
                     default:
-                    c=c.replace(match[0],"");
+                    r=r.replace(match[0],"");
                     notes.push(match[1]);
                     ;
                 }
