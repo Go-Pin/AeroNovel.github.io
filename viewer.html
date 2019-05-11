@@ -3,11 +3,26 @@
 <head>
     <meta charset="utf-8">
     <title>Aero Novel</title>
+    <style>
+    #main
+    {
+        line-height:1.4;width:90%;margin:5%;font-size:10px;
+    }
+    #main->p
+    {
+        margin: 0;
+        text-indent:2em;
+    }
+    .draeout
+    {
+        text-indent:1em;
+    }
+    </style>
 </head>
 
 <body>
     <p id="log"></p>
-    <div id="main" style="line-height:1.4;text-indent:2em;width:90%;margin:5%;"></div>
+    <div id="main" ></div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -43,8 +58,10 @@
                 var code = "";
                 cont.forEach(ele => {
                     var c=ele;
+                    var cla="";
                     if(c.length==0)c="<br/>";
-                    code += "<p>" + ele + "</p>";
+                    if(c[0]=="「"||c[0]=="『"||c[0]=="（")cla+=" drawout";
+                    code += "<p class='"+cla+"'>" + ele + "</p>";
                 });
                 main.innerHTML = code;
 
