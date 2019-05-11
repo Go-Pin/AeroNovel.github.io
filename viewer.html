@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="utf-8">
+<title>Aero Novel</title>
+</head>
+<body>
+<p id="log"></p>
+<div id="main"></div>
+<script type="text/javascript">
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+var title=GetQueryString("t");
+var n=GetQueryString("n");
+var log=document.getElementById("log");
+var log=document.getElementById("main");
+log.innerHTML=title+n;
+var loader=new XMLHttpRequest();
+function RenderContent()
+{
+     main.innerHTML=loader.responseText;
+}
+loader.open('get','novel/三角距离无限为零 3/contents.txt');
+loader.onreadystatechange=RenderContent;
+</script>
+</body>
+
+</html>
