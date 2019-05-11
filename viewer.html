@@ -4,27 +4,29 @@
     <meta charset="utf-8">
     <title>Aero Novel</title>
     <style>
-    #main
-    {
-        line-height:1.7;width:100%;margin:0;font-size:20px;
-    }
-    #main>p
-    {
-        margin: 0;
-        text-indent:2em;
-    }
-    #main>.drawout
-    {
-        margin: 0;
-        text-indent:1em;
-    }
+        #main {
+            line-height: 1.7;
+            width: 100%;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        #main>p {
+            margin: 0;
+            text-indent: 2em;
+        }
+
+        #main>.drawout {
+            margin: 0;
+            text-indent: 1em;
+        }
     </style>
 </head>
 
 <body>
     iphone:20px
     <p id="log"></p>
-    <div id="main" ></div>
+    <div id="main"></div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -40,11 +42,11 @@
         var loader;
         Load();//Load->RenderTOC->LoadContent->RenderContent
         function RenderTOC() {
-            if(loader.readyState==4)
-            if (loader.status == 200) {
-                TOC = loader.responseText.split("\n");
-                LoadContent();
-            }
+            if (loader.readyState == 4)
+                if (loader.status == 200) {
+                    TOC = loader.responseText.split("\n");
+                    LoadContent();
+                }
         }
         function Load() {
             //Load TOC
@@ -54,26 +56,34 @@
             loader.send(null);
         }
         function RenderContent() {
-            if(loader.readyState==4)
-            if (loader.status == 200) {
-                var cont = loader.responseText.split("\n");
-                var code = "";
-                cont.forEach(ele => {
-                    var c=ele;
-                    var cla="";
-                    if(c.length==0)c="<br/>";
-                    if(c[0]=="「"||c[0]=="『"||c[0]=="（")cla+=" drawout";
-                    code += "<p class='"+cla+"'>" + ele + "</p>";
-                });
-                main.innerHTML = code;
-
-            }
+            if (loader.readyState == 4)
+                if (loader.status == 200) {
+                    var cont = loader.responseText.split("\n");
+                    var code = "";
+                    cont.forEach(ele => {
+                        var c = ele;
+                        var cla = "";
+                        if (c.length == 0) c = "<br/>";
+                        if (c[0] == "「" || c[0] == "『" || c[0] == "（") cla += " drawout";
+                        code += "<p class='" + cla + "'>" + ele + "</p>";
+                    });
+                    main.innerHTML = code;
+                    var ua = navigator.userAgent;
+                    var iPad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                        iPhone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                        isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+                        isMobile = isIphone || isAndroid;
+                    if (isMobile) {
+                        log.innerHTML+="Mobile";
+                        main.style.fontSize = "40px";
+                    }
+                }
         }
         function LoadContent() {
             TOC.forEach(ele => {
-                if (ele.indexOf(n)==0) {
+                if (ele.indexOf(n) == 0) {
                     loader = new XMLHttpRequest();
-                    loader.open('GET', 'Novels/'+title+"/" + ele, true);
+                    loader.open('GET', 'Novels/' + title + "/" + ele, true);
                     loader.onreadystatechange = RenderContent;
                     loader.send(null);
                     return;
