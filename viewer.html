@@ -27,7 +27,6 @@
 </head>
 
 <body>
-    iphone:20px
     <p id="log"></p>
     <div id="main"></div>
     <script type="text/javascript">
@@ -40,7 +39,7 @@
         var n = GetQueryString("n");
         var log = document.getElementById("log");
         var main = document.getElementById("main");
-        log.innerHTML = title;
+        log.innerHTML += "Title:"+title+";";
         var TOC;
         var loader;
         Load();//Load->RenderTOC->LoadContent->RenderContent
@@ -66,9 +65,9 @@
                     cont.forEach(ele => {
                         var c = ele.replace('\r','');
                         var cla = "";
-                        console.log(c.length);
                         if (c.length == 0) c = "<br>";
                         if (c[0] == "「" || c[0] == "『" || c[0] == "（") cla += " drawout";
+                        console.log(c);
                         code += "<p class='" + cla + "'>" + ele + "</p>";
                     });
                     main.innerHTML = code;
@@ -78,7 +77,7 @@
                         isAndroid = ua.match(/(Android)\s+([\d.]+)/),
                         isMobile = iPhone || isAndroid;
                     if (isMobile) {
-                        log.innerHTML+="Mobile";
+                        log.innerHTML+="Mobile;";
                         main.style.fontSize = "5vw";              
                     }
                     var fir=main.getElementsByTagName("p")[0];
