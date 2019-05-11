@@ -67,8 +67,7 @@
                         var cla = "";
                         if (c.length == 0) c = "<br>";
                         if (c[0] == "「" || c[0] == "『" || c[0] == "（") cla += " drawout";
-                        console.log(c);
-                        code += "<p class='" + cla + "'>" + ele + "</p>";
+                        code += "<p class='" + cla + "'>" + c + "</p>";
                     });
                     main.innerHTML = code;
                     var ua = navigator.userAgent;
