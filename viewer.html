@@ -121,11 +121,11 @@
                     default:
                     r=r.replace(match[0],"");
                     notes.push(match[1]);
-                    ;
+                    break;
                 }
                 pos=match.lastIndex;
             }
-            return c;
+            return r;
         }
         function Footnote(a)
         {
