@@ -78,8 +78,11 @@
                         isMobile = iPhone || isAndroid;
                     if (isMobile) {
                         log.innerHTML+="Mobile";
-                        main.style.fontSize = "5vw";
+                        main.style.fontSize = "5vw";              
                     }
+                    var fir=main.getElementsByTagName("p")[0];
+                    fir.style.fontWeight="bold";
+                    fir.style.fontSize="1.5em";
                 }
         }
         function LoadContent() {
