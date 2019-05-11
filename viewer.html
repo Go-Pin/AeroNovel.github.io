@@ -7,7 +7,7 @@
 
 <body>
     <p id="log"></p>
-    <div id="main"></div>
+    <div id="main" style="line-height:1.4;text-indent:2em;width:90%;margin:5%;"></div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -21,7 +21,7 @@
         log.innerHTML = title;
         var TOC;
         var loader;
-        Load();//Load->RenderTOC->LoadContent
+        Load();//Load->RenderTOC->LoadContent->RenderContent
         function RenderTOC() {
             if(loader.readyState==4)
             if (loader.status == 200) {
@@ -42,6 +42,8 @@
                 var cont = loader.responseText.split("\n");
                 var code = "";
                 cont.forEach(ele => {
+                    var c=ele;
+                    if(c.length==0)c="<br/>";
                     code += "<p>" + ele + "</p>";
                 });
                 main.innerHTML = code;
