@@ -105,7 +105,7 @@
                     fir.style.fontSize = "1.5em";
                     fir.style.textIndent = "0";
                     fir.style.textAlign = "center";
-                    document.documentElement.scrollTop=localStorage.getItem(key);
+                    window.pageYOffset=localStorage.getItem(key);
                     ok=true;
                 }
         }
@@ -163,7 +163,7 @@
         setInterval(SavePos,5000);
         function SavePos()
         {
-            if(ok)localStorage.setItem(key,document.documentElement.scrollTop); 
+            if(ok)localStorage.setItem(key,window.pageYOffset); 
         }
        
     </script>
