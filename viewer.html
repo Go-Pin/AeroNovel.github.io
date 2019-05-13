@@ -37,11 +37,11 @@
         }
 
         #main>.aligned {
-            text-indent:0;
+            text-indent: 0;
         }
-        .illu
-        {
-            width:100%;
+
+        .illu {
+            width: 100%;
         }
     </style>
 </head>
@@ -60,10 +60,10 @@
         var log = document.getElementById("log");
         var main = document.getElementById("main");
         log.innerHTML += "Title:" + title + ";";
-        var key=title+"_"+n;
+        var key = title + "_" + n;
         var TOC;
         var loader;
-        var ok=false;
+        var ok = false;
         Load();//Load->RenderTOC->LoadContent->RenderContent
         function RenderTOC() {
             if (loader.readyState == 4)
@@ -109,8 +109,8 @@
                     fir.style.fontSize = "1.5em";
                     fir.style.textIndent = "0";
                     fir.style.textAlign = "center";
-                    window.scrollTo(0,parseFloat(localStorage.getItem(key)));
-                    ok=true;
+                    window.scrollTo(0, parseFloat(localStorage.getItem(key)));
+                    ok = true;
                 }
         }
         function LoadContent() {
@@ -161,44 +161,42 @@
             return r;
         }
         function EncodeNovel2(c) {
-            var reg =new Array(
+            var reg = new Array(
                 /\[align=(.*?)\](.*?)\[\/align\]/i,
                 /\[note\]/,
                 /\[note=(.*?)\]/,
                 /\[img\](.*?)\[\/img\]/
-            ); 
-            var rept=new Array(
+            );
+            var rept = new Array(
                 "<p class='aligned' style='text-align:$1'>$2</p>",
                 "",
                 "",
-            "<img class='illu' src='$1'>"
+                "<img class='illu' src='$1'>"
             );
             var r = c;
-            var matched=false;
+            var matched = false;
             while (matched) {
-                matched=false;
-                for(var i =0;i<reg.length;i++)
-                {
+                matched = false;
+                for (var i = 0; i < reg.length; i++) {
                     var match = reg[i].exec(r);
-                    if(match!=null)
-                    {
-                        var rep=rept[i];
-                        switch(i)
-                        {
+                    console.log(match);
+                    if (match != null) {
+                        var rep = rept[i];
+                        switch (i) {
                             case 1://[note]
-                            rep="<a class='note' onclick='Footnote(" + note_count + ")'><sup>注</sup></a>";
-                            note_count++;
-                            break;
+                                rep = "<a class='note' onclick='Footnote(" + note_count + ")'><sup>注</sup></a>";
+                                note_count++;
+                                break;
                             case 2://[note=...]
-                            notes.push(match[1]);
-                            break;         
+                                notes.push(match[1]);
+                                break;
                         }
-                        matched=true;
-                        r=r.replace(reg[i],rep);
+                        matched = true;
+                        r = r.replace(reg[i], rep);
                         break;
                     }
                 }
-                
+
 
             }
             return r;
@@ -207,12 +205,11 @@
             alert(notes[a]);
         }
 
-        setInterval(SavePos,5000);
-        function SavePos()
-        {
-            if(ok)localStorage.setItem(key,window.pageYOffset); 
+        setInterval(SavePos, 5000);
+        function SavePos() {
+            if (ok) localStorage.setItem(key, window.pageYOffset);
         }
-       
+
     </script>
 </body>
 
