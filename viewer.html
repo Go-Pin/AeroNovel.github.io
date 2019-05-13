@@ -1,18 +1,24 @@
 <html>
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-control" content="no-cache">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="0">
     <title>Aero Novel</title>
     <style>
-        body{background: antiquewhite;}
+        body {
+            background: antiquewhite;
+        }
+
         #main {
             line-height: 1.7;
             width: 96%;
             margin: 2%;
             font-size: 20px;
-            
+
         }
 
         #main>p {
@@ -24,13 +30,13 @@
             margin: 0;
             text-indent: 1.2em;
         }
-        .note
-        {
-            color:cornflowerblue;
+
+        .note {
+            color: cornflowerblue;
         }
-        .center
-        {
-            text-align: center;
+
+        .aligned {
+            text-indent:0;
         }
     </style>
 </head>
@@ -48,7 +54,7 @@
         var n = GetQueryString("n");
         var log = document.getElementById("log");
         var main = document.getElementById("main");
-        log.innerHTML += "Title:"+title+";";
+        log.innerHTML += "Title:" + title + ";";
         var TOC;
         var loader;
         Load();//Load->RenderTOC->LoadContent->RenderContent
@@ -71,13 +77,15 @@
                 if (loader.status == 200) {
                     var cont = loader.responseText.split("\n");
                     var code = "";
+                    var line = 0;
                     cont.forEach(ele => {
-                        var c = ele.replace('\r','');
-                        c=EncodeNovel(c);
+                        var c = ele.replace('\r', '');
+                        c = EncodeNovel(c);
                         var cla = "";
                         if (c.length == 0) c = "<br>";
                         if (c[0] == "「" || c[0] == "『" || c[0] == "（") cla += " drawout";
-                        code += "<p class='" + cla + "'>" + c + "</p>";
+                        code += "<p id='line" + line + "' class='" + cla + "'>" + c + "</p>";
+                        line++;
                     });
                     main.innerHTML = code;
                     var ua = navigator.userAgent;
@@ -86,14 +94,14 @@
                         isAndroid = ua.match(/(Android)\s+([\d.]+)/),
                         isMobile = iPhone || isAndroid;
                     if (isMobile) {
-                        log.innerHTML+="Mobile;";
-                        main.style.fontSize = "5vw";              
+                        log.innerHTML += "Mobile;";
+                        main.style.fontSize = "5vw";
                     }
-                    var fir=main.getElementsByTagName("p")[0];
-                    fir.style.fontWeight="bold";
-                    fir.style.fontSize="1.5em";
-                    fir.style.textIndent="0";
-                    fir.style.textAlign="center";
+                    var fir = main.getElementsByTagName("p")[0];
+                    fir.style.fontWeight = "bold";
+                    fir.style.fontSize = "1.5em";
+                    fir.style.textIndent = "0";
+                    fir.style.textAlign = "center";
                 }
         }
         function LoadContent() {
@@ -109,47 +117,41 @@
 
 
         }
-        var note_count=0;
-        var notes=new Array();
-        function EncodeNovel(c)
-        {
-            var reg=/\[(.*?)\]/gi;
-            var r=c;
-            while(true)
-            {
-                var match=reg.exec(r);
-                if(match==null)break;
+        var note_count = 0;
+        var notes = new Array();
+        function EncodeNovel(c) {
+            var reg = /\[(.*?)\]/gi;
+            var r = c;
+            while (true) {
+                var match = reg.exec(r);
+                if (match == null) break;
                 console.log(match[1]);
-                switch(match[1])
-                {
+                switch (match[1]) {
                     case "note":
-                    r=r.replace(match[0],"<a class='note' onclick='Footnote("+note_count+")'><sup>注</sup></a>");
-                    note_count++;
-                    break;
+                        r = r.replace(match[0], "<a class='note' onclick='Footnote(" + note_count + ")'><sup>注</sup></a>");
+                        note_count++;
+                        break;
                     case "/align":
-                    r=r.replace(match[0],"</p>");
-                    break;
+                        r = r.replace(match[0], "</p>");
+                        break;
                     default:
-                    var spl=match[1].split("=");
-                    if(spl.length==2)
-                    {
-                        switch(spl[0])
-                        {
-                            case "align":
-                            r=r.replace(match[0],"<p style='text-align:"+spl[1]+"'>");
+                        var spl = match[1].split("=");
+                        if (spl.length == 2) {
+                            switch (spl[0]) {
+                                case "align":
+                                    r = r.replace(match[0], "<p class='aligned' style='text-align:" + spl[1] + "'>");
+                                    break;
+                            }
                             break;
                         }
+                        r = r.replace(match[0], "");
+                        notes.push(match[1]);
                         break;
-                    }
-                    r=r.replace(match[0],"");
-                    notes.push(match[1]);
-                    break;
                 }
             }
             return r;
         }
-        function Footnote(a)
-        {
+        function Footnote(a) {
             alert(notes[a]);
         }
     </script>
