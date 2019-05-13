@@ -56,8 +56,10 @@
         var log = document.getElementById("log");
         var main = document.getElementById("main");
         log.innerHTML += "Title:" + title + ";";
+        var key=title+"_"+n;
         var TOC;
         var loader;
+        var ok=false;
         Load();//Load->RenderTOC->LoadContent->RenderContent
         function RenderTOC() {
             if (loader.readyState == 4)
@@ -103,6 +105,8 @@
                     fir.style.fontSize = "1.5em";
                     fir.style.textIndent = "0";
                     fir.style.textAlign = "center";
+                    document.documentElement.scrollTop=localStorage.getItem(key);
+                    ok=true;
                 }
         }
         function LoadContent() {
@@ -155,6 +159,13 @@
         function Footnote(a) {
             alert(notes[a]);
         }
+
+        setInterval(SavePos);
+        function SavePos()
+        {
+            if(ok)localStorage.setItem(key,document.documentElement.scrollTop); 
+        }
+       
     </script>
 </body>
 
