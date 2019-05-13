@@ -160,7 +160,7 @@
             alert(notes[a]);
         }
 
-        setInterval(SavePos);
+        setInterval(SavePos,5000);
         function SavePos()
         {
             if(ok)localStorage.setItem(key,document.documentElement.scrollTop); 
