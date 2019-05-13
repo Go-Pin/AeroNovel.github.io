@@ -28,6 +28,10 @@
         {
             color:cornflowerblue;
         }
+        .center
+        {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -122,7 +126,21 @@
                     r=r.replace(match[0],"<a class='note' onclick='Footnote("+note_count+")'><sup>注</sup></a>");
                     note_count++;
                     break;
+                    case "/align":
+                    r=r.replace(match[0],"</p>");
+                    break;
                     default:
+                    var spl=match[1].split("=");
+                    if(spl.length==2)
+                    {
+                        switch(spl[0])
+                        {
+                            case "align":
+                            r=r.replace(match[0],"<p style='text-align:"+spl[1]+"'>");
+                            break;
+                        }
+                        break;
+                    }
                     r=r.replace(match[0],"");
                     notes.push(match[1]);
                     break;
