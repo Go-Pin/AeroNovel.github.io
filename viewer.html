@@ -39,6 +39,10 @@
         #main>.aligned {
             text-indent:0;
         }
+        .illu
+        {
+            width:100%;
+        }
     </style>
 </head>
 
@@ -83,7 +87,7 @@
                     var line = 0;
                     cont.forEach(ele => {
                         var c = ele.replace('\r', '');
-                        c = EncodeNovel(c);
+                        c = EncodeNovel2(c);
                         var cla = "";
                         if (c.length == 0) c = "<br>";
                         if (c[0] == "「" || c[0] == "『" || c[0] == "（") cla += " drawout";
@@ -153,6 +157,49 @@
                         notes.push(match[1]);
                         break;
                 }
+            }
+            return r;
+        }
+        function EncodeNovel2(c) {
+            var reg =new Array(
+                /\[align=(.*?)\](.*?)\[\/align\]/i,
+                /\[note\]/,
+                /\[note=(.*?)\]/,
+                /\[img\](.*?)\[\/img\]/
+            ); 
+            var rept=new Array(
+                "<p class='aligned' style='text-align:$1'>$2</p>",
+                "",
+                "",
+            "<img class='illu' src='$1'>"
+            );
+            var r = c;
+            var matched=false;
+            while (matched) {
+                matched=false;
+                for(var i =0;i<reg.length;i++)
+                {
+                    var match = reg[i].exec(r);
+                    if(match!=null)
+                    {
+                        var rep=rept[i];
+                        switch(i)
+                        {
+                            case 1://[note]
+                            rep="<a class='note' onclick='Footnote(" + note_count + ")'><sup>注</sup></a>";
+                            note_count++;
+                            break;
+                            case 2://[note=...]
+                            notes.push(match[1]);
+                            break;         
+                        }
+                        matched=true;
+                        r=r.replace(reg[i],rep);
+                        break;
+                    }
+                }
+                
+
             }
             return r;
         }
