@@ -4,7 +4,8 @@
         "editor.fontSize": 18,
         "editor.lineHeight": 26,
         "editor.wordBasedSuggestions": false,
-        "editor.fontFamily":"宋体"
+        "editor.fontFamily":"宋体",
+        "editor.minimap.enabled":false
 
     }
 }
