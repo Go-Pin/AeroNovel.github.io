@@ -77,7 +77,7 @@
         function Load() {
             //Load TOC
             loader = new XMLHttpRequest();
-            loader.open('GET', 'Novels/' + title + '/contents.txt'+"?random="+date.getDate(), true);
+            loader.open('GET', 'Novels/' + title + '/contents.txt'+"?random="+date.getTime(), true);
             loader.onreadystatechange = RenderTOC;
             loader.send(null);
         }
