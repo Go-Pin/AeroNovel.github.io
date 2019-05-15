@@ -167,13 +167,15 @@
                 /\[align=(.*?)\](.*?)\[\/align\]/i,
                 /\[note\]/,
                 /\[note=(.*?)\]/,
-                /\[img\](.*?)\[\/img\]/
+                /\[img\](.*?)\[\/img\]/,
+                /\[b\](.*?)\[\/b\]/
             );
             var rept = new Array(
                 "<p class='aligned' style='text-align:$1'>$2</p>",
                 "",
                 "",
-                "<div><img class='illu' src='$1'></div>"
+                "<div><img class='illu' src='$1'></div>",
+                "<b>$1</b>"
             );
             var r = c;
             var matched = true;
