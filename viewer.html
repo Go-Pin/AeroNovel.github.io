@@ -119,7 +119,7 @@
             TOC.forEach(ele => {
                 if (ele.indexOf(n) == 0) {
                     loader = new XMLHttpRequest();
-                    loader.open('GET', 'Novels/' + title + "/" + ele+"?random="+date.getDate(), true);
+                    loader.open('GET', 'Novels/' + title + "/" + ele+"?random="+date.getTime(), true);
                     loader.onreadystatechange = RenderContent;
                     loader.send(null);
                     return;
