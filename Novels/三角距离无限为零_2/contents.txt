@@ -1,4 +1,6 @@
-﻿05彩页.txt
+﻿00cover.txt
+01info.txt
+05彩页.txt
 10序章【并非文学】.txt
 11第六章【School Girl Hard Bop】.txt
 12第七章【晚霞少女】.txt

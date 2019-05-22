@@ -1,0 +1,45 @@
+﻿.info>p
+{
+    margin: 0;
+    text-indent: 0em;
+    line-height: 1;
+}
+
+p {
+    margin: 0;
+    text-indent: 2em;
+    text-align: justify;
+    line-height: 1.7;
+    font-family: "宋体";
+}
+
+.drawout {
+    margin: 0;
+    text-indent: 1.5em;
+}
+
+.aligned {
+    text-indent: 0;
+}
+
+@media amzn-kf8 
+{
+aside {display: none;}
+.pagebreak{page-break-after: always;}
+}
+
+.illu {
+    width: 100%;
+    page-break-after: always;
+}
+.title0
+{
+    font-size: 1.5em;
+    text-align: center!important;
+    text-indent: 0;
+    font-weight: bold;
+}
+.noteref
+{
+text-decoration:none;
+}
