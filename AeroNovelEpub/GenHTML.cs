@@ -8,6 +8,7 @@ namespace AeroNovelEpub
     {
         public static string Gen(string[] txt)
         {
+            string noteref_temp = "<a class=\"noteref\" epub:type=\"noteref\" href=\"#note{0}\" id=\"note_ref{0}\"><sup>[注]</sup></a>";
             int note_count = 0;
             List<string> notes = new List<string>();
             var regs = new string[]{
@@ -43,7 +44,6 @@ namespace AeroNovelEpub
                             switch (i)
                             {
                                 case 1://noteref
-                                    string noteref_temp = "<a class=\"noteref\" epub:type=\"noteref\" href=\"#note{0}\" id=\"note_ref{0}\"><sup>[注]</sup></a>";
                                     r = reg.Replace(r, string.Format(noteref_temp, note_count), 1);
                                     note_count++;
                                     break;
@@ -82,7 +82,15 @@ namespace AeroNovelEpub
             int count = 0;
             foreach (string note in notes)
             {
+                int div=note.IndexOf(':');
+                if(div>0)
+                {
+                    string noteref_text=note.Substring(0,div);
+                    html=html.Replace(string.Format(noteref_temp, count),string.Format(noteref_temp.Replace("注",noteref_text), count));  
+                }
+
                 html += string.Format(note_temp, count, note);
+                count++;
             }
             return html;
         }
