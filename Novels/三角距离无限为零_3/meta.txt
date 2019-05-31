@@ -1,0 +1,9 @@
+﻿  <metadata xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:title>三角距离无限为零 3</dc:title>
+    <dc:creator opf:role="aut">岬 鷺宮</dc:creator>
+    <dc:creator opf:role="ill">hiten</dc:creator>
+    <dc:language>zh-CN</dc:language>
+    <dc:contributor>AE</dc:contributor>
+    <dc:identifier id="BookId" opf:scheme="UUID">{urn:uuid}</dc:identifier>
+    <meta name="cover" content="cover.jpg" />
+  </metadata>
