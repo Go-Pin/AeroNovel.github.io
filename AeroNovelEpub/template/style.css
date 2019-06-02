@@ -43,3 +43,7 @@ aside {display: none;}
 {
 text-decoration:none;
 }
+.hide
+{
+    margin-left: 100%;
+}

@@ -37,7 +37,8 @@ namespace AeroNovelEpub
                                 string body = GenHtml.Gen(lines);
                                 if (f.Contains("info.txt"))
                                 {
-                                    body = "<div class=\"info\">" + body + "<p>AeroNovel EPUB生成器by AE " + DateTime.Now + "</p><p>支持pop-up footnote</p><p>推荐使用阅读器:<br/>Apple Books<br/>Microsoft Edge (1809)<br/>Kindle(使用Kindlegen 转换)</p></div>";
+                                    body = "<div class=\"info\">" + body + "<p>AeroNovel EPUB生成器by AE " + DateTime.Now + "</p><p>支持pop-up footnote</p><p>推荐使用阅读器:<br/>Apple Books<br/>Microsoft Edge (1809)<br/>Kindle(使用Kindlegen 转换)<br/>Lithium (Android)</p></div>";
+                                    File.WriteAllText("info.txt",body);
                                 }
                                 string xhtml = xhtml_temp.Replace("{❤title}", chaptitle).Replace("{❤body}", body);
                                 File.WriteAllText("temp/OEBPS/Text/t" + no + ".xhtml", xhtml);

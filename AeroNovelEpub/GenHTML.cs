@@ -78,6 +78,9 @@ namespace AeroNovelEpub
                 }
                 html += r + "\n";
             }
+            if(notes.Count>0)
+            {
+            html+="<div class=\"hide\">";
             string note_temp = "<aside epub:type=\"footnote\" id=\"note{0}\"><a href=\"#note_ref{0}\"></a><p class=\"pagebreak\">{1}</p></aside>\n";
             int count = 0;
             foreach (string note in notes)
@@ -92,6 +95,9 @@ namespace AeroNovelEpub
                 html += string.Format(note_temp, count, note);
                 count++;
             }
+            html+="</div>";
+            }
+
             return html;
         }
     }
