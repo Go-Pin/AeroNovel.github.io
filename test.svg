@@ -11,6 +11,6 @@ xmlns="http://www.w3.org/2000/svg">
 </filter>
 </defs>
 
-<text x="0" y="20" style="font-size:18;filter:url(#Gaussian_Blur)">你们⚪多了吧</text>
+<text x="3" y="20" style="font-size:18;filter:url(#Gaussian_Blur)">你们⚪多了吧</text>
 
 </svg>
