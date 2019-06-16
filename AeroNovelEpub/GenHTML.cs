@@ -16,7 +16,9 @@ namespace AeroNovelEpub
                 "\\[note\\]",
                 "\\[note=(.*?)\\]",
                 "\\[img\\](.*?)\\[\\/img\\]",
-                "\\[b\\](.*?)\\[\\/b\\]"
+                "\\[b\\](.*?)\\[\\/b\\]",
+                "\\[title\\](.*?)\\[\\/title\\]",
+                "\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]"
                 };
 
             var repls = new string[]{
@@ -24,11 +26,12 @@ namespace AeroNovelEpub
                 "",
                 "",
                 "",
-                "<b>$1</b>"
+                "<b>$1</b>",
+                "<p class=\"title0\">$1</p>",
+                "<ruby>$2<rt>$1</rt></ruby>"
                 };
 
             string html = "";
-            bool titled = false;
             foreach (string line in txt)
             {
                 string r = line;
@@ -66,7 +69,6 @@ namespace AeroNovelEpub
                     }
                 } while (m.Success);
                 if (r.Length == 0) { r = "<br/>"; }
-                if (!titled) { r = "<p class=\"title0\">" + r + "</p>"; titled = true; }
                 if (!Regex.Match(r, "<p.*>").Success)
                 {
                     if (r[0] == '（' || r[0] == '「' || r[0] == '『')
@@ -80,7 +82,7 @@ namespace AeroNovelEpub
             }
             if(notes.Count>0)
             {
-            html+="<div class=\"hide\">";
+            html+="<aside class=\"notesection\" epub:type=\"footnote\"><p>注释：</p>";
             string note_temp = "<aside epub:type=\"footnote\" id=\"note{0}\"><a href=\"#note_ref{0}\"></a><p class=\"pagebreak\">{1}</p></aside>\n";
             int count = 0;
             foreach (string note in notes)
@@ -95,7 +97,7 @@ namespace AeroNovelEpub
                 html += string.Format(note_temp, count, note);
                 count++;
             }
-            html+="</div>";
+            html+="</aside>";
             }
 
             return html;

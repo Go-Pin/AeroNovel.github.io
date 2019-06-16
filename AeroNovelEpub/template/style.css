@@ -1,7 +1,8 @@
 ﻿.info>p
 {
     margin: 0;
-    text-indent: 0em;
+    margin-left:3em;
+    text-indent: -3em;
     line-height: 1;
 }
 
@@ -43,7 +44,8 @@ aside {display: none;}
 {
 text-decoration:none;
 }
-.hide
+.notesection
 {
-    margin-left: 100%;
+    border:1px solid;
+    font-size: 0.7em;
 }
