@@ -26,13 +26,12 @@ p {
 @media amzn-kf8 
 {
 aside {display: none;}
-.pagebreak{page-break-after: always;}
 }
 
 .illu {
     width: 100%;
-    page-break-after: always;
 }
+/*.illu->img{page-break-after: always;}*/
 .title0
 {
     font-size: 1.5em;
@@ -49,3 +48,4 @@ text-decoration:none;
     border:1px solid;
     font-size: 0.7em;
 }
+.pagebreak{page-break-after: always;}

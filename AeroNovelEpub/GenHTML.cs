@@ -6,7 +6,12 @@ namespace AeroNovelEpub
 {
     public class GenHtml
     {
-        public static string Gen(string[] txt)
+        string src_root;
+        public GenHtml(string src_root)
+        {
+            this.src_root=src_root;
+        }
+        public string Gen(string[] txt)
         {
             string noteref_temp = "<a class=\"noteref\" epub:type=\"noteref\" href=\"#note{0}\" id=\"note_ref{0}\"><sup>[注]</sup></a>";
             int note_count = 0;
@@ -18,7 +23,8 @@ namespace AeroNovelEpub
                 "\\[img\\](.*?)\\[\\/img\\]",
                 "\\[b\\](.*?)\\[\\/b\\]",
                 "\\[title\\](.*?)\\[\\/title\\]",
-                "\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]"
+                "\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]",
+                "\\[pagebreak\\]"
                 };
 
             var repls = new string[]{
@@ -28,7 +34,8 @@ namespace AeroNovelEpub
                 "",
                 "<b>$1</b>",
                 "<p class=\"title0\">$1</p>",
-                "<ruby>$2<rt>$1</rt></ruby>"
+                "<ruby>$2<rt>$1</rt></ruby>",
+                "<p class=\"pagebreak\"><br/></p>"
                 };
 
             string html = "";
@@ -56,6 +63,12 @@ namespace AeroNovelEpub
                                     break;
                                 case 3://img
                                     string src = "../Images/" + Path.GetFileName(m.Groups[1].Value);
+                                    if(src.Contains(".svg"))
+                                    {
+                                        string svg=File.ReadAllText(Path.Combine(src_root,"Images",Path.GetFileName(m.Groups[1].Value)));
+                                        r = reg.Replace(r, "<p class=\"aligned illu\">"+svg+"</p>", 1);
+                                        break;
+                                    }
                                     string img_temp = "<p class=\"aligned illu\"><img class=\"illu\" src=\"{0}\" alt=\"\"/></p>";
                                     r = reg.Replace(r, string.Format(img_temp, src), 1);
                                     break;

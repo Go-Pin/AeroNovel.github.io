@@ -1,0 +1,56 @@
+<svg viewBox="0 0 2048 1090" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <image stroke="null" xlink:href="../Images/ic2_2.jpg"  height="1090" width="2048"/>
+<g >
+<defs><filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+<feGaussianBlur stdDeviation="10 10" result="glow" />
+<feMerge>
+<feMergeNode in="glow"/><feMergeNode in="glow"/><feMergeNode in="glow"/>
+</feMerge>
+</filter></defs>
+<text  y="160" x="1855" font-size="32" fill="#3ca2c6" style="filter:url(#glow);">
+<tspan x="1857" dy="-27" rotate="90">「</tspan>
+<tspan x="1853" dy="55">想</tspan>
+<tspan x="1853" dy="32" >要</tspan>
+<tspan x="1853" dy="32">的</tspan>
+<tspan x="1853" dy="32" >东</tspan>
+<tspan x="1853" dy="32">西</tspan>
+<tspan x="1865" dy="15" rotate="90" >…</tspan>
+<tspan x="1865" dy="32" rotate="90">…</tspan>
+<tspan x="1858" dy="45" >？</tspan>
+<tspan x="1857" dy="5" rotate="90">」</tspan>
+</text>
+<text  y="160" x="1855" font-size="30" fill="#ffffff">
+<tspan x="1857" dy="-27" rotate="90">「</tspan>
+<tspan x="1853" dy="55">想</tspan>
+<tspan x="1853" dy="32" >要</tspan>
+<tspan x="1853" dy="32">的</tspan>
+<tspan x="1853" dy="32" >东</tspan>
+<tspan x="1853" dy="32">西</tspan>
+<tspan x="1865" dy="15" rotate="90" >…</tspan>
+<tspan x="1865" dy="32" rotate="90">…</tspan>
+<tspan x="1858" dy="45" >？</tspan>
+<tspan x="1857" dy="5" rotate="90">」</tspan>
+</text>
+<text  y="407" x="1055" font-size="32" fill="#01ac8a" style="filter:url(#glow);">
+<tspan x="325" dy="-27" rotate="90">「</tspan>
+<tspan x="335" dy="31" rotate="90" >…</tspan>
+<tspan x="335" dy="30" rotate="90">…</tspan>
+<tspan x="323" dy="55">想</tspan>
+<tspan x="323" dy="37" >要</tspan>
+<tspan x="323" dy="37">接</tspan>
+<tspan x="323" dy="37" >吻</tspan>
+<tspan x="326" dy="5" rotate="90">」</tspan>
+</text>
+<text  y="407" x="1055" font-size="30" fill="#ffffff">
+<tspan x="325" dy="-27" rotate="90">「</tspan>
+<tspan x="335" dy="31" rotate="90" >…</tspan>
+<tspan x="335" dy="30" rotate="90">…</tspan>
+<tspan x="323" dy="55">想</tspan>
+<tspan x="323" dy="37" >要</tspan>
+<tspan x="323" dy="37">接</tspan>
+<tspan x="323" dy="37" >吻</tspan>
+<tspan x="326" dy="5" rotate="90">」</tspan>
+</text>
+</g>
+</svg>

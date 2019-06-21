@@ -22,6 +22,7 @@ namespace AeroNovelEpub
                     if (!Directory.Exists("temp\\OEBPS\\Images")) { Directory.CreateDirectory("temp\\OEBPS\\Images"); }
                     if (!Directory.Exists("temp\\OEBPS\\Styles")) { Directory.CreateDirectory("temp\\OEBPS\\Styles"); }
                     string spine = "";
+                    GenHtml genHtml=new GenHtml(args[0]);
                     if (File.Exists(contents))
                     {
                         string[] files = File.ReadAllLines(contents);
@@ -34,7 +35,7 @@ namespace AeroNovelEpub
                                 string no = m.Groups[1].Value;
                                 string chaptitle = m.Groups[2].Value;
                                 string[] lines = File.ReadAllLines(filepath);
-                                string body = GenHtml.Gen(lines);
+                                string body = genHtml.Gen(lines);
                                 if (f.Contains("info.txt"))
                                 {
                                     body = "<div class=\"info\">" + body + "<p>AeroNovel EPUB生成器by AE " + DateTime.Now + "</p><p>支持pop-up footnote</p><p>推荐使用阅读器:<br/>Apple Books<br/>Microsoft Edge (1809)<br/>Kindle(使用Kindlegen 转换)<br/>Lithium (Android)</p></div>";
@@ -53,11 +54,12 @@ namespace AeroNovelEpub
 
                         }
                     }
-                    string img = Path.Combine(args[0], "img");
+                    string img = Path.Combine(args[0], "Images");
                     if (Directory.Exists(img))
                     {
                         foreach (var f in Directory.GetFiles(img))
                         {
+                            if(f.Contains(".jpg"))
                             File.Copy(f, Path.Combine("temp\\OEBPS\\Images", Path.GetFileName(f)));
                         }
                     }
@@ -84,6 +86,7 @@ namespace AeroNovelEpub
                     File.WriteAllText("temp\\mimetype", "application/epub+zip");
                     Directory.CreateDirectory("temp\\META-INF");
                     File.Copy("template/container.xml", "temp\\META-INF\\container.xml");
+                    if(File.Exists(title + ".epub"))File.Delete(title + ".epub");
                     ZipFile.CreateFromDirectory("temp", title + ".epub");
                     DeleteDir("temp");
 
