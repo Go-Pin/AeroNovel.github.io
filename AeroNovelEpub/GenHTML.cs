@@ -66,7 +66,7 @@ namespace AeroNovelEpub
                                     if(src.Contains(".svg"))
                                     {
                                         string svg=File.ReadAllText(Path.Combine(src_root,"Images",Path.GetFileName(m.Groups[1].Value)));
-                                        r = reg.Replace(r, "<p class=\"aligned illu\">"+svg+"</p>", 1);
+                                        r = reg.Replace(r, "<div class=\"illu\">"+svg+"</div>", 1);
                                         break;
                                     }
                                     string img_temp = "<p class=\"aligned illu\"><img class=\"illu\" src=\"{0}\" alt=\"\"/></p>";
@@ -82,7 +82,7 @@ namespace AeroNovelEpub
                     }
                 } while (m.Success);
                 if (r.Length == 0) { r = "<br/>"; }
-                if (!Regex.Match(r, "<p.*>").Success)
+                if (!Regex.Match(r, "<p.*>").Success&&!Regex.Match(r, "<div.*>").Success)
                 {
                     if (r[0] == '（' || r[0] == '「' || r[0] == '『')
                     {
@@ -95,8 +95,8 @@ namespace AeroNovelEpub
             }
             if(notes.Count>0)
             {
-            html+="<aside class=\"notesection\" epub:type=\"footnote\"><p>注释：</p>";
-            string note_temp = "<aside epub:type=\"footnote\" id=\"note{0}\"><a href=\"#note_ref{0}\"></a><p class=\"pagebreak\">{1}</p></aside>\n";
+            html+="<aside class=\"notesection\" epub:type=\"footnote\">注释<br/>";
+            string note_temp = "<aside epub:type=\"footnote\" id=\"note{0}\"><a href=\"#note_ref{0}\">{2}</a><p class=\"pagebreak\">{1}</p></aside>\n";
             int count = 0;
             foreach (string note in notes)
             {
@@ -105,9 +105,11 @@ namespace AeroNovelEpub
                 {
                     string noteref_text=note.Substring(0,div);
                     html=html.Replace(string.Format(noteref_temp, count),string.Format(noteref_temp.Replace("注",noteref_text), count));  
+                    string note_content=note.Substring(div+1);
+                    html += string.Format(note_temp, count, note_content,noteref_text+":");
                 }
-
-                html += string.Format(note_temp, count, note);
+                else
+                html += string.Format(note_temp, count, note,"注:");
                 count++;
             }
             html+="</aside>";

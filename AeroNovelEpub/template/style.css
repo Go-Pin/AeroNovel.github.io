@@ -30,8 +30,15 @@ aside {display: none;}
 
 .illu {
     width: 100%;
+    height:100vh;/*Apple Books*/
+    page-break-inside: avoid;
 }
-/*.illu->img{page-break-after: always;}*/
+.illu img
+{
+    width: auto;
+    height: auto;
+}
+
 .title0
 {
     font-size: 1.5em;
@@ -46,6 +53,14 @@ text-decoration:none;
 .notesection
 {
     border:1px solid;
-    font-size: 0.7em;
+}
+aside>p
+{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+aside>a
+{
+    text-decoration: none;
 }
 .pagebreak{page-break-after: always;}
