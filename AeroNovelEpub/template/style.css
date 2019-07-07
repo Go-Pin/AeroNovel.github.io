@@ -54,10 +54,10 @@ text-decoration:none;
 {
     border:1px solid;
 }
-aside>p
-{
-    padding-left: 1em;
-    padding-right: 1em;
+aside
+{ 
+    margin-left: 1em;
+    margin-right: 1em;
 }
 aside>a
 {
