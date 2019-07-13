@@ -142,7 +142,7 @@
                 /\[note=(.*?)\]/,
                 /\[img\](.*?)\[\/img\]/,
                 /\[b\](.*?)\[\/b\]/,
-                /\/*.*?\*\//
+                /(\/*.*?\*\/)/
             );
             var rept = new Array(
                 "<p class='aligned' style='text-align:$1'>$2</p>",
@@ -158,7 +158,6 @@
                 matched = false;
                 for (var i = 0; i < reg.length; i++) {
                     var match = reg[i].exec(r);
-                    console.log(match);
                     if (match != null) {
                         var rep = rept[i];
                         switch (i) {
