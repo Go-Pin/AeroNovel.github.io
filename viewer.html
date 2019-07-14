@@ -49,19 +49,50 @@
             max-width: 100vw;
             text-align: center;
         }
+
+        #menu {
+            position: absolute;
+            top: 0;
+            width: 80vh;
+            max-width: 96%;
+            margin: auto;
+            z-index: 5;
+            display: none;
+            background: whitesmoke;
+
+        }
+
+        #menu_trigger {
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            width: 80vh;
+            max-width: 96%;
+            margin: auto;
+            height: 10vh;
+            z-index: 10;
+        }
+        .menu_item
+        {
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
     <p id="log"></p>
     <div id="main"></div>
+    <div id="menu_trig" onclick="Menu()"></div>
+    <div id="menu">
+        <div class="menu_item" onclick="Night()">夜间模式</div>
+    </div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);
             if (r != null) return decodeURIComponent(r[2]); return null;
         }
-        var date=new Date();
+        var date = new Date();
         var title = GetQueryString("t");
         var n = GetQueryString("n");
         var log = document.getElementById("log");
@@ -82,7 +113,7 @@
         function Load() {
             //Load TOC
             loader = new XMLHttpRequest();
-            loader.open('GET', 'Novels/' + title + '/contents.txt'+"?random="+date.getTime(), true);
+            loader.open('GET', 'Novels/' + title + '/contents.txt' + "?random=" + date.getTime(), true);
             loader.onreadystatechange = RenderTOC;
             loader.send(null);
         }
@@ -124,7 +155,7 @@
             TOC.forEach(ele => {
                 if (ele.indexOf(n) == 0) {
                     loader = new XMLHttpRequest();
-                    loader.open('GET', 'Novels/' + title + "/" + ele+"?random="+date.getTime(), true);
+                    loader.open('GET', 'Novels/' + title + "/" + ele + "?random=" + date.getTime(), true);
                     loader.onreadystatechange = RenderContent;
                     loader.send(null);
                     return;
@@ -135,7 +166,7 @@
         }
         var note_count = 0;
         var notes = new Array();
-       function EncodeNovel2(c) {
+        function EncodeNovel2(c) {
             var reg = new Array(
                 /\[align=(.*?)\](.*?)\[\/align\]/i,
                 /\[note\]/,
@@ -186,6 +217,37 @@
         setInterval(SavePos, 3000);
         function SavePos() {
             if (ok) localStorage.setItem(key, window.pageYOffset);
+        }
+
+        var menu = document.getElementById("menu");
+        var isOpen=false;
+        function Menu() {
+            if(isOpen)
+            {
+                menu.style.display="none";
+                isOpen=false;
+            }
+            else
+            {
+                menu.style.display="block";
+                isOpen=true;
+            }
+        }
+        var isNight=false;
+        function Night()
+        {
+            if(isNight)
+            {
+                document.body.style.background="antiquewhite";
+                document.body.style.color="black";
+                isNight=false;
+            }
+            else
+            {
+                document.body.style.background="black";
+                document.body.style.color="antiquewhite";
+                isNight=true;
+            }
         }
 
     </script>
