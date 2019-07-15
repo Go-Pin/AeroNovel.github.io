@@ -12,16 +12,11 @@
         body {
             background: antiquewhite;
         }
-        body>div
-        {
-            margin: 0;
-            padding: 0;
-        }
 
         #main {
             line-height: 1.5;
             width: 80vh;
-            max-width: 96%;
+            max-width: 96vw;
             margin: auto;
             padding: 2%;
             font-size: 20px;
@@ -63,15 +58,18 @@
             font-weight: bold;
         }
 
-        #menu {
+        .menu {
+            width: 80vh;
+            max-width: 96vw;
+            margin: 0;
+        }
+        #menu
+        {
             position: fixed;
             top: 10vh;
-            width: 100%;
-            margin: 0;
             z-index: 5;
             display: none;
         }
-
         #menu_trigger {
             background: transparent;
             position: fixed;
@@ -87,16 +85,14 @@
             background: rgba(255,255,255,0.3); 
         }
         .menu_item {
-            margin-left:auto;
-            margin-right: auto;  
-            width: 80vh;
-            max-width: 96%;
+
             background: rgba(255,255,255,0.7);
             border: 1px solid red;
             padding: 2%;
             cursor: pointer;
             font-weight: bold;
             color:black;
+            width: 100%;
         }
         .menu_item:hover
         {
@@ -110,12 +106,12 @@
     <p id="log"></p>
     <div id="main"></div>
     <div id="menu_trigger" onclick="Menu()"></div>
-    <div id="menu">
+    <div id="menu" class="menu">
         <div class="menu_item" onclick="Night()">夜间模式</div>
         <div class="menu_item last">上一章</div>
         <div class="menu_item next">下一章</div>
     </div>
-    <div class="menu_item next">下一章</div>
+    <div class="menu"><div class="menu_item next">下一章</div></div>
     </div>
     <script type="text/javascript">
         function GetQueryString(name) {
