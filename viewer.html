@@ -81,18 +81,24 @@
         .menu_item {
             width: 100%;
             background: whitesmoke;
+            color: blue;
             border: 1px solid red;
+            padding: 0.3em;
         }
     </style>
 </head>
 
 <body>
     <p id="log"></p>
+    <div class="last menu_item">上一章</div>
     <div id="main"></div>
     <div id="menu_trigger" onclick="Menu()"></div>
     <div id="menu">
         <div class="menu_item" onclick="Night()">夜间模式</div>
+        <div class="menu_item last">上一章</div>
+        <div class="menu_item next">下一章</div>
     </div>
+    <div id="next menu_item">下一章</div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -116,6 +122,7 @@
                     TOC = loader.responseText.split("\n");
                     LoadContent();
                 }
+                if (loader.status == 404){main.innerHTML="没能找到这本书……";}
         }
         function Load() {
             //Load TOC
@@ -157,6 +164,7 @@
                     window.scrollTo(0, parseFloat(localStorage.getItem(key)));
                     ok = true;
                 }
+                if (loader.status == 404){main.innerHTML="没能找到这个章节……";}
         }
         function LoadContent() {
             TOC.forEach(ele => {
@@ -254,7 +262,11 @@
             }
             Menu();
         }
-
+        var current=window.location.href.match(/n=([0-9]*)/)[1];
+        var last=e.href=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)-1));
+        var next=e.href=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)+1));
+        [].forEach.call(document.getElementsByClassName("last"),function(e){e.href=last;});
+        [].forEach.call(document.getElementsByClassName("next"),function(e){e.href=next;});
     </script>
 </body>
 
