@@ -87,14 +87,15 @@
             margin-right: auto;  
             width: 80vh;
             max-width: 96%;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.7);
             border: 1px solid red;
             padding: 2%;
             cursor: pointer;
+            font-weight: bold;
         }
         .menu_item:hover
         {
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.9);
         }
     </style>
 </head>
@@ -278,8 +279,8 @@
         var current=window.location.href.match(/n=([0-9]*)/)[1];
         var last=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)-1));
         var next=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)+1));
-        [].forEach.call(document.getElementsByClassName("last"),function(e){e.onclick=function(){window.open(last);};});
-        [].forEach.call(document.getElementsByClassName("next"),function(e){e.onclick=function(){window.open(next);};});
+        [].forEach.call(document.getElementsByClassName("last"),function(e){e.onclick=function(){window.open(last,'_self');};});
+        [].forEach.call(document.getElementsByClassName("next"),function(e){e.onclick=function(){window.open(next,'_self');};});
     </script>
 </body>
 
