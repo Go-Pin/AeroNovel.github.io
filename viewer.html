@@ -62,7 +62,6 @@
             position: fixed;
             top: 10vh;
             width: 100%;
-            max-width: 96%;
             margin: auto;
             z-index: 5;
             display: none;
@@ -96,10 +95,10 @@
     <div id="menu_trigger" onclick="Menu()"></div>
     <div id="menu">
         <div class="menu_item" onclick="Night()">夜间模式</div>
-        <div class="menu_item last">上一章</div>
-        <div class="menu_item next">下一章</div>
+        <div class="menu_item"><a class="last">上一章</a></div>
+        <div class="menu_item"><a class="next">下一章</a></div>
     </div>
-    <div class="next menu_item">下一章</div>
+    <div class="menu_item"><a class="next">下一章</a></div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
