@@ -166,15 +166,18 @@
                 }
         }
         function LoadContent() {
+            var message=true;
             TOC.forEach(ele => {
                 if (ele.indexOf(n) == 0) {
                     loader = new XMLHttpRequest();
                     loader.open('GET', 'Novels/' + title + "/" + ele + "?random=" + date.getTime(), true);
                     loader.onreadystatechange = RenderContent;
                     loader.send(null);
+                    message=false;
                     return;
                 }
             });
+            if(message)
             main.innerHTML="没能找到这个章节……";
 
 
