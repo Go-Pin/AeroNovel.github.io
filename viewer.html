@@ -61,7 +61,7 @@
         #menu {
             position: fixed;
             top: 10vh;
-            width: 80vh;
+            width: 100%;
             max-width: 96%;
             margin: auto;
             z-index: 5;
@@ -79,9 +79,11 @@
         }
 
         .menu_item {
-            width: 100%;
-            background: whitesmoke;
-            color: blue;
+            margin-left:auto;
+            margin-right: auto;  
+            width: 80vh;
+            max-width: 96%;
+            background: rgba(255,255,255,0.5);
             border: 1px solid red;
             padding: 0.3em;
         }
@@ -90,7 +92,6 @@
 
 <body>
     <p id="log"></p>
-    <div class="last menu_item">上一章</div>
     <div id="main"></div>
     <div id="menu_trigger" onclick="Menu()"></div>
     <div id="menu">
@@ -98,7 +99,7 @@
         <div class="menu_item last">上一章</div>
         <div class="menu_item next">下一章</div>
     </div>
-    <div id="next menu_item">下一章</div>
+    <div class="next menu_item">下一章</div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -263,8 +264,8 @@
             Menu();
         }
         var current=window.location.href.match(/n=([0-9]*)/)[1];
-        var last=e.href=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)-1));
-        var next=e.href=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)+1));
+        var last=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)-1));
+        var next=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)+1));
         [].forEach.call(document.getElementsByClassName("last"),function(e){e.href=last;});
         [].forEach.call(document.getElementsByClassName("next"),function(e){e.href=next;});
     </script>
