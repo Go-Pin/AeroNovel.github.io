@@ -76,6 +76,11 @@
             margin: auto;
             height: 10vh;
             z-index: 10;
+            cursor: pointer;
+        }
+        #menu_trigger:hover
+        {
+            background: rgba(255,255,255,0.3); 
         }
         .menu_item {
             margin-left:auto;
@@ -85,6 +90,11 @@
             background: rgba(255,255,255,0.5);
             border: 1px solid red;
             padding: 2%;
+            cursor: pointer;
+        }
+        .menu_item:hover
+        {
+            background: rgba(255,255,255,0.8);
         }
     </style>
 </head>
@@ -95,10 +105,10 @@
     <div id="menu_trigger" onclick="Menu()"></div>
     <div id="menu">
         <div class="menu_item" onclick="Night()">夜间模式</div>
-        <div class="menu_item"><a class="last">上一章</a></div>
-        <div class="menu_item"><a class="next">下一章</a></div>
+        <div class="menu_item last">上一章</div>
+        <div class="menu_item next">下一章</div>
     </div>
-    <div class="menu_item"><a class="next">下一章</a></div>
+    <div class="menu_item next">下一章</div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -268,8 +278,8 @@
         var current=window.location.href.match(/n=([0-9]*)/)[1];
         var last=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)-1));
         var next=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)+1));
-        [].forEach.call(document.getElementsByClassName("last"),function(e){e.href=last;});
-        [].forEach.call(document.getElementsByClassName("next"),function(e){e.href=next;});
+        [].forEach.call(document.getElementsByClassName("last"),function(e){e.onclick=function(){window.open(last);};});
+        [].forEach.call(document.getElementsByClassName("next"),function(e){e.onclick=function(){window.open(next);};});
     </script>
 </body>
 
