@@ -84,7 +84,7 @@
             max-width: 96%;
             background: rgba(255,255,255,0.5);
             border: 1px solid red;
-            padding: 0.3em;
+            padding: 2%;
         }
     </style>
 </head>
@@ -164,7 +164,6 @@
                     window.scrollTo(0, parseFloat(localStorage.getItem(key)));
                     ok = true;
                 }
-                if (loader.status == 404){main.innerHTML="没能找到这个章节……";}
         }
         function LoadContent() {
             TOC.forEach(ele => {
@@ -176,6 +175,7 @@
                     return;
                 }
             });
+            main.innerHTML="没能找到这个章节……";
 
 
         }
