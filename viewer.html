@@ -58,17 +58,14 @@
             font-weight: bold;
         }
 
-        .menu {
-            width: 80vh;
-            max-width: 96vw;
-            margin: 0;
-        }
         #menu
         {
             position: fixed;
             top: 10vh;
             z-index: 5;
             display: none;
+            width: 100vw;
+            margin: 0;
         }
         #menu_trigger {
             background: transparent;
@@ -85,14 +82,15 @@
             background: rgba(255,255,255,0.3); 
         }
         .menu_item {
-
+            width: 80vh;
+            max-width: 96vw;
+            margin: auto;
+            padding: 2%;
             background: rgba(255,255,255,0.7);
             border: 1px solid red;
-            padding: 2%;
             cursor: pointer;
             font-weight: bold;
             color:black;
-            width: 100%;
         }
         .menu_item:hover
         {
@@ -111,7 +109,7 @@
         <div class="menu_item last">上一章</div>
         <div class="menu_item next">下一章</div>
     </div>
-    <div class="menu"><div class="menu_item next">下一章</div></div>
+        <div class="menu_item next">下一章</div>
     </div>
     <script type="text/javascript">
         function GetQueryString(name) {
