@@ -70,44 +70,46 @@
             z-index: 10;
             cursor: pointer;
         }
-        #menu_trigger:hover
-        {
-            background: rgba(255,255,255,0.3); 
+
+        #menu_trigger:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
-        #menu
-        {
+
+        #menu {
             position: fixed;
             top: 10vh;
             z-index: 5;
             display: none;
-            left:0;
+            left: 0;
             width: 30%;
-            
+
         }
+
         .menu_item {
             width: 100%;
             margin: auto;
             padding: 2%;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255, 255, 255, 0.7);
             border: 1px solid red;
             cursor: pointer;
             font-weight: bold;
-            color:black;
+            color: black;
         }
+
         .button {
             width: 80vh;
             max-width: 96%;
             margin: auto;
             padding: 2%;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255, 255, 255, 0.7);
             border: 1px solid red;
             cursor: pointer;
             font-weight: bold;
-            color:black;
+            color: black;
         }
-        .button:hover
-        {
-            background: rgba(255,255,255,0.9);
+
+        .button:hover {
+            background: rgba(255, 255, 255, 0.9);
         }
     </style>
 </head>
@@ -121,7 +123,7 @@
         <div class="menu_item last">上一章</div>
         <div class="menu_item next">下一章</div>
     </div>
-        <div class="button next">下一章</div>
+    <div class="button next">下一章</div>
     <script type="text/javascript">
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -145,7 +147,7 @@
                     TOC = loader.responseText.split("\n");
                     LoadContent();
                 }
-                if (loader.status == 404){main.innerHTML="没能找到这本书……";}
+            if (loader.status == 404) { main.innerHTML = "没能找到这本书……"; }
         }
         function Load() {
             //Load TOC
@@ -184,24 +186,25 @@
                     fir.style.fontSize = "1.5em";
                     fir.style.textIndent = "0";
                     fir.style.textAlign = "center";
+                    ReplaceSVG();
                     window.scrollTo(0, parseFloat(localStorage.getItem(key)));
                     ok = true;
                 }
         }
         function LoadContent() {
-            var message=true;
+            var message = true;
             TOC.forEach(ele => {
                 if (ele.indexOf(n) == 0) {
                     loader = new XMLHttpRequest();
                     loader.open('GET', 'Novels/' + title + "/" + ele + "?random=" + date.getTime(), true);
                     loader.onreadystatechange = RenderContent;
                     loader.send(null);
-                    message=false;
+                    message = false;
                     return;
                 }
             });
-            if(message)
-            main.innerHTML="没能找到这个章节……";
+            if (message)
+                main.innerHTML = "没能找到这个章节……";
 
 
         }
@@ -242,6 +245,8 @@
                             case 2://[note=...]
                                 notes.push(match[1]);
                                 break;
+
+                                break;
                         }
                         matched = true;
                         r = r.replace(reg[i], rep);
@@ -252,6 +257,27 @@
 
             }
             return r;
+        }
+        function ReplaceSVG() {
+            [].forEach.call(document.getElementsByClassName("img"), function (e) {
+                if (e.src.indexOf("svg") > 0) {
+                    let load = new XMLHttpRequest();
+                    load.open(e.src, true);
+                    load.onreadystatechange = function () {
+                        if (loader.readyState == 4&&loader.status == 200) 
+                        {
+                            var pa=e.parentNode;
+                            var svg=document.createElement("div");
+                            svg.className="illu";
+                            svg.innerHTML=load.responseText;
+                            pa.insertBefore(svg,e);
+                            pa.removeChild(e);
+                            
+                        }
+                    };
+                    loader.send(null);
+                }
+            });
         }
         function Footnote(a) {
             alert(notes[a]);
@@ -288,11 +314,11 @@
             }
             Menu();
         }
-        var current=window.location.href.match(/n=([0-9]*)/)[1];
-        var last=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)-1));
-        var next=window.location.href.replace(/n=([0-9])*/,"n="+(parseInt(current)+1));
-        [].forEach.call(document.getElementsByClassName("last"),function(e){e.onclick=function(){window.open(last,'_self');};});
-        [].forEach.call(document.getElementsByClassName("next"),function(e){e.onclick=function(){window.open(next,'_self');};});
+        var current = window.location.href.match(/n=([0-9]*)/)[1];
+        var last = window.location.href.replace(/n=([0-9])*/, "n=" + (parseInt(current) - 1));
+        var next = window.location.href.replace(/n=([0-9])*/, "n=" + (parseInt(current) + 1));
+        [].forEach.call(document.getElementsByClassName("last"), function (e) { e.onclick = function () { window.open(last, '_self'); }; });
+        [].forEach.call(document.getElementsByClassName("next"), function (e) { e.onclick = function () { window.open(next, '_self'); }; });
     </script>
 </body>
 
