@@ -262,11 +262,14 @@
             console.log("SVG");
             [].forEach.call(document.getElementsByTagName("img"), function (e) {
                 if (e.src.indexOf("svg") > 0) {
-                    let load = new XMLHttpRequest();
-                    load.open("GET",e.src,false);
-                    loader.send();
-                    var pa=e.parentNode;
-                    pa.innerHTML=load.responseText;
+                    let loadsvg = new XMLHttpRequest();
+                    loadsvg.open("GET", e.src, true);
+                    loadsvg.onreadystatechange = function () {
+                        let pa = e.parentNode;
+                        pa.innerHTML = loadsvg.responseText;
+                    }
+                    loadsvg.send();
+
                 }
             });
         }
