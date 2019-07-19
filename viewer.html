@@ -265,8 +265,10 @@
                     let loadsvg = new XMLHttpRequest();
                     loadsvg.open("GET", e.src, true);
                     loadsvg.onreadystatechange = function () {
-                        let pa = e.parentNode;
-                        pa.innerHTML = loadsvg.responseText;
+                        if (loadsvg.readyState == loadsvg.DONE) {
+                            let pa = e.parentNode;
+                            pa.innerHTML = loadsvg.responseText;
+                        }
                     }
                     loadsvg.send();
 
