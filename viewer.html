@@ -267,7 +267,9 @@
                     loadsvg.onreadystatechange = function () {
                         if (loadsvg.readyState == loadsvg.DONE) {
                             let pa = e.parentNode;
-                            pa.innerHTML = loadsvg.responseText;
+                            let svgcontent=loadsvg.responseText;
+                            svgcontent=svgcontent.replace("../Images","Novels/"+title+"/Images");
+                            pa.innerHTML = svgcontent;
                         }
                     }
                     loadsvg.send();
