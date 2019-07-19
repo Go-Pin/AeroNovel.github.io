@@ -263,16 +263,10 @@
             [].forEach.call(document.getElementsByTagName("img"), function (e) {
                 if (e.src.indexOf("svg") > 0) {
                     let load = new XMLHttpRequest();
-                    load.open("GET",e.src,true);
-                    load.onreadystatechange = function () {
-                        if (loader.readyState == 4&&loader.status == 200) 
-                        {
-                            var pa=e.parentNode;
-                            pa.innerHTML=load.responseText;
-                            
-                        }
-                    };
-                    loader.send(null);
+                    load.open("GET",e.src,false);
+                    loader.send();
+                    var pa=e.parentNode;
+                    pa.innerHTML=load.responseText;
                 }
             });
         }
