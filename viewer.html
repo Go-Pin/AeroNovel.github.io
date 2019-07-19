@@ -259,7 +259,8 @@
             return r;
         }
         function ReplaceSVG() {
-            [].forEach.call(document.getElementsByClassName("img"), function (e) {
+            console.log("SVG");
+            [].forEach.call(document.getElementsByTagName("img"), function (e) {
                 if (e.src.indexOf("svg") > 0) {
                     let load = new XMLHttpRequest();
                     load.open(e.src, true);
@@ -267,11 +268,7 @@
                         if (loader.readyState == 4&&loader.status == 200) 
                         {
                             var pa=e.parentNode;
-                            var svg=document.createElement("div");
-                            svg.className="illu";
-                            svg.innerHTML=load.responseText;
-                            pa.insertBefore(svg,e);
-                            pa.removeChild(e);
+                            pa.innerHTML=load.responseText;
                             
                         }
                     };
