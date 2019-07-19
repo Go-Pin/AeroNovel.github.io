@@ -4,6 +4,6 @@
     <dc:creator opf:role="ill">hiten</dc:creator>
     <dc:language>zh-CN</dc:language>
     <dc:contributor>AE</dc:contributor>
-    <dc:identifier id="BookId" opf:scheme="UUID">{urn:uuid}</dc:identifier>
+    <dc:identifier id="BookId" opf:scheme="UUID">urn:uuid:7bed7701-7e8e-4ee3-9381-890e900049fe</dc:identifier>
     <meta name="cover" content="cover.jpg" />
   </metadata>

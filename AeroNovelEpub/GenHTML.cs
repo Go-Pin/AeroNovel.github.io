@@ -24,7 +24,8 @@ namespace AeroNovelEpub
                 "\\[b\\](.*?)\\[\\/b\\]",
                 "\\[title\\](.*?)\\[\\/title\\]",
                 "\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]",
-                "\\[pagebreak\\]"
+                "\\[pagebreak\\]",
+                "/\\*.*?\\*/"
                 };
 
             var repls = new string[]{
@@ -35,7 +36,8 @@ namespace AeroNovelEpub
                 "<b>$1</b>",
                 "<p class=\"title0\">$1</p>",
                 "<ruby>$2<rt>$1</rt></ruby>",
-                "<p class=\"pagebreak\"><br/></p>"
+                "<p class=\"pagebreak\"><br/></p>",
+                ""
                 };
 
             string html = "";
@@ -69,7 +71,7 @@ namespace AeroNovelEpub
                                         r = reg.Replace(r, "<div class=\"illu\">"+svg+"</div>", 1);
                                         break;
                                     }
-                                    string img_temp = "<p class=\"aligned illu\"><img class=\"illu\" src=\"{0}\" alt=\"\"/></p>";
+                                    string img_temp = "<div class=\"aligned illu\"><img class=\"illu\" src=\"{0}\" alt=\"\"/></div>";
                                     r = reg.Replace(r, string.Format(img_temp, src), 1);
                                     break;
                                 default:

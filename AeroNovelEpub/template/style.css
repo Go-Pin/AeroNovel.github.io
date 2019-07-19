@@ -1,5 +1,6 @@
 ﻿.info>p
 {
+font-size:0.7em;
     margin: 0;
     margin-left:3em;
     text-indent: -3em;
@@ -30,7 +31,8 @@ aside {display: none;}
 
 .illu {
     width: 100%;
-    height:100vh;/*Apple Books*/
+    height:150vw;
+    max-height: 100vh;
     page-break-inside: avoid;
 }
 .illu img

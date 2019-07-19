@@ -58,6 +58,12 @@
             -webkit-text-emphasis-position: under;
             font-weight: bold;
         }
+        .title0
+        {
+            font-size: 1.5em;
+            text-indent: 0;
+            text-align: center;
+        }
 
 
         #menu_trigger {
@@ -219,7 +225,9 @@
                 /\[img\](.*?)\[\/img\]/,
                 /\[b\](.*?)\[\/b\]/,
                 /(\/\*.*?\*\/)/,
-                /\[emphasis\](.*?)\[\/emphasis\]/
+                /\[emphasis\](.*?)\[\/emphasis\]/,
+                /\[title\](.*?)\[\/title\]/,
+                /\[pagebreak\]/
             );
             var rept = new Array(
                 "<p class='aligned' style='text-align:$1'>$2</p>",
@@ -228,7 +236,9 @@
                 "<div class='illu'><img class='illu' src='$1'></div>",
                 "<b>$1</b>",
                 "",
-                "<span class=\"emph\">$1</span>"
+                "<span class=\"emph\">$1</span>",
+                "<p class='title0'>$1</p>",
+                ""//pagebreak
             );
             var r = c;
             var matched = true;

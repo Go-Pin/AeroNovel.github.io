@@ -1,5 +1,6 @@
 ﻿00cover.txt
 01info.txt
+02简介.txt
 05彩页.txt
 09三角距离无限为零2.txt
 10序章【并非文学】.txt
@@ -11,6 +12,7 @@
 16第十一章【甚至无法受伤】.txt
 17终章【春之风暴】.txt
 18后记.txt
+20backcover.txt
 
 
 

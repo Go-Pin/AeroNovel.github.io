@@ -21,8 +21,8 @@
 「我的『喜欢』……既不是纯洁的、也不是美好的东西。而是想做这种事情的『喜欢』」
 [pagebreak]
 [img]https://AeroNovel.github.io/Novels/三角距离无限为零_2/Images/ic2_2.jpg[/img]
-「想要的东西……？」
-「想要接吻」
+<span style="color:#3ca2c6">「想要的东西……？」</span>
+<span style="color:#01ac8a">「想要接吻」</span>
 [pagebreak]
 [img]https://AeroNovel.github.io/Novels/三角距离无限为零_2/Images/ic2_3.jpg[/img]
-「——呐，矢野君！」
+<span style="color:#00aca6">「——呐，矢野君！」</span>
