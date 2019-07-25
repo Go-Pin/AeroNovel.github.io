@@ -1,0 +1,41 @@
+<svg viewBox="0 0 2048 1090" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <image stroke="null" xlink:href="../Images/ic2_3.jpg"  height="1090" width="2048"/>
+  <rect  width="50" height="320" y="80" x="1890" fill="#f2f4f2"/>
+   <rect  width="50" height="130" y="280" x="1890" fill="#f8faf9"/>
+<g >
+<defs><filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+<feGaussianBlur stdDeviation="10 10" result="glow" />
+<feMerge>
+<feMergeNode in="glow"/><feMergeNode in="glow"/><feMergeNode in="glow"/>
+</feMerge>
+</filter></defs>
+<text  y="100" x="1855" font-size="32" fill="#00aca6" style="filter:url(#glow);">
+<tspan x="1906" dy="-27" rotate="90">「</tspan>
+<tspan x="1907" dy="30" rotate="90" >—</tspan>
+<tspan x="1907" dy="32" rotate="90">—</tspan>
+<tspan x="1903" dy="65">喂</tspan>
+<tspan x="1918" dy="22" >，</tspan>
+<tspan x="1903" dy="32">矢</tspan>
+<tspan x="1903" dy="32" >野</tspan>
+<tspan x="1903" dy="32">君</tspan>
+<tspan x="1908" dy="35" >！</tspan>
+<tspan x="1907" dy="5" rotate="90">」</tspan>
+</text>
+
+<text  y="100" x="1855" font-size="30" fill="#ffffff">
+<tspan x="1906" dy="-27" rotate="90">「</tspan>
+<tspan x="1907" dy="30" rotate="90" >—</tspan>
+<tspan x="1907" dy="32" rotate="90">—</tspan>
+<tspan x="1903" dy="65">喂</tspan>
+<tspan x="1918" dy="22" >，</tspan>
+<tspan x="1903" dy="32">矢</tspan>
+<tspan x="1903" dy="32" >野</tspan>
+<tspan x="1903" dy="32">君</tspan>
+<tspan x="1908" dy="35" >！</tspan>
+<tspan x="1907" dy="5" rotate="90">」</tspan>
+</text>
+
+
+</g>
+</svg>
