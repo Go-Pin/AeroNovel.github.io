@@ -30,9 +30,17 @@ namespace AeroNovelEpub
                         if(depth<label.Count+1){depth=label.Count+1;}
                         count++;
                         r+=string.Format("<navPoint id=\"navPoint-{0}\" playOrder=\"{0}\"><navLabel><text>{1}</text></navLabel><content src=\"dummylink\"/>\n",count,tag);
+                        
+                        m=Regex.Match(line.Substring(m.Index+m.Length),"([0-9][0-9])(.*?).txt");
+                        if(m.Success)
+                        {
+                            string link="Text/t"+m.Groups[1].Value+".xhtml";
+                            r=r.Replace("dummylink",link);
+                        }
                     }
                     continue;
                 }
+                
                 m=Regex.Match(line,"([0-9][0-9])(.*?).txt");
                 if(m.Success)
                 {

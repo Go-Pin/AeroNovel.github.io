@@ -43,7 +43,7 @@ namespace AeroNovelEpub
             string html = "";
             foreach (string line in txt)
             {
-                string r = line;
+                string r =EncodeHTML(line);
                 Match m = Regex.Match("", "1");
                 do
                 {
@@ -118,6 +118,10 @@ namespace AeroNovelEpub
             }
 
             return html;
+        }
+        public static string EncodeHTML(string s)
+        {
+            return s.Replace("&","&amp;");
         }
     }
 }
