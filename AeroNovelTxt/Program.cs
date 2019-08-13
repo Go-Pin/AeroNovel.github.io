@@ -54,7 +54,8 @@ namespace AeroNovelEpub
                 "\\[title\\](.*?)\\[\\/title\\]",
                 "\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]",
                 "\\[pagebreak\\]",
-                "/\\*.*?\\*/"
+                "/\\*.*?\\*/",
+                "\\[emphasis\\](.*?)\\[\\/emphasis\\]"
                 };
 
             var repls = new string[]{
@@ -66,7 +67,8 @@ namespace AeroNovelEpub
                 "$1",
                 "$2（$1）",
                 "",
-                ""
+                "",
+                "$1"
                 };
 
             string html = "";
@@ -99,6 +101,78 @@ namespace AeroNovelEpub
                     }
                 } while (m.Success);
                 html += "　　" + r + "\r\n";
+            }
+
+
+            return html;
+        }
+        public static string GenBbcode(string[] txt)
+        {
+            var regs = new string[]{
+                //"\\([align=.*?\\].*?\\[\\/align\\])",
+                "\\[note\\]",
+                "\\[note=(.*?)\\]",
+                //"\\[img\\](.*?)\\[\\/img\\]",
+                //"\\[b\\](.*?)\\[\\/b\\]",
+                "\\[title\\](.*?)\\[\\/title\\]",
+                //"\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]",
+                "\\[pagebreak\\]",
+                "/\\*.*?\\*/"
+                };
+
+            var repls = new string[]{
+                //"$1",
+                "[sup]注[/sup]",
+                "[size=1]$1[/size]",
+                //"[图片：$1]",
+                //"$1",
+                "[size=5]$1[/size]",
+                //"$2（$1）",
+                "",
+                ""
+                };
+
+            string html = "";
+            foreach (string line in txt)
+            {
+                string r = line;
+                Match m = Regex.Match("", "1");
+                do
+                {
+                    for (int i = 0; i < regs.Length; i++)
+                    {
+                        m = Regex.Match(r, regs[i]);
+                        if (m.Success)
+                        {
+                            Regex reg = new Regex(regs[i]);
+                            switch (i)
+                            {
+                                default:
+                                    r = reg.Replace(r, repls[i]);
+                                    break;
+                            }
+                            break;
+                        }
+
+                    }
+                } while (m.Success);
+                if(r.Length>0)
+                switch(r[0])
+                {
+                    case '「':
+                case '『':
+                case '＜':
+                case '《':
+                r="　"+r;
+                break;
+                default:
+                r="　　"+r;
+                break;
+                }
+                if(r.EndsWith("[/align]"))
+                html +=  r ;
+                else
+                html += r + "\r\n";
             }
 
 

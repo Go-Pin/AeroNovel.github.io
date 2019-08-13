@@ -25,7 +25,8 @@ namespace AeroNovelEpub
                 "\\[title\\](.*?)\\[\\/title\\]",
                 "\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]",
                 "\\[pagebreak\\]",
-                "/\\*.*?\\*/"
+                "/\\*.*?\\*/",
+                "\\[emphasis\\](.*?)\\[\\/emphasis\\]"
                 };
 
             var repls = new string[]{
@@ -37,7 +38,8 @@ namespace AeroNovelEpub
                 "<p class=\"title0\">$1</p>",
                 "<ruby>$2<rt>$1</rt></ruby>",
                 "<p class=\"pagebreak\"><br/></p>",
-                ""
+                "",
+                "<span class=\"emph\">$1</span>"
                 };
 
             string html = "";

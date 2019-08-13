@@ -44,7 +44,7 @@ div.illu{page-break-after: always;}
     width: auto;
     height: auto;
 }
-p.illu{font-size: 5vw;}
+p.illu{font-size:1em;line-height:1.1;}
 .title0
 {
     font-size: 1.5em;
@@ -71,3 +71,7 @@ aside>a
     text-decoration: none;
 }
 .pagebreak{page-break-after: always;}
+.emph
+{
+    font-weight: bold;
+}
