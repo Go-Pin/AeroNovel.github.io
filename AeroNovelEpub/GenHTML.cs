@@ -18,15 +18,16 @@ namespace AeroNovelEpub
             List<string> notes = new List<string>();
             var regs = new string[]{
                 "\\[align=(.*?)\\](.*?)\\[\\/align\\]",
-                "\\[note\\]",
-                "\\[note=(.*?)\\]",
-                "\\[img\\](.*?)\\[\\/img\\]",
+                "\\[note\\]",//1
+                "\\[note=(.*?)\\]",//2
+                "\\[img\\](.*?)\\[\\/img\\]",//3
                 "\\[b\\](.*?)\\[\\/b\\]",
                 "\\[title\\](.*?)\\[\\/title\\]",
                 "\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]",
                 "\\[pagebreak\\]",
                 "/\\*.*?\\*/",
-                "\\[emphasis\\](.*?)\\[\\/emphasis\\]"
+                "\\[emphasis\\](.*?)\\[\\/emphasis\\]",
+                "\\[s\\](.*?)\\[\\/s\\]"
                 };
 
             var repls = new string[]{
@@ -39,7 +40,8 @@ namespace AeroNovelEpub
                 "<ruby>$2<rt>$1</rt></ruby>",
                 "<p class=\"pagebreak\"><br/></p>",
                 "",
-                "<span class=\"emph\">$1</span>"
+                "<span class=\"emph\">$1</span>",
+                "<s>$1</s>"
                 };
 
             string html = "";
