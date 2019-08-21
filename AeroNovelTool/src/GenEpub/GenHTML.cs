@@ -26,7 +26,7 @@ namespace AeroNovelEpub
                 "\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]",
                 "\\[pagebreak\\]",
                 "/\\*.*?\\*/",
-                "//.*",
+                "///.*",
                 "\\[emphasis\\](.*?)\\[\\/emphasis\\]",
                 "\\[s\\](.*?)\\[\\/s\\]"
                 };
