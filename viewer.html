@@ -220,10 +220,13 @@
                 /\[note=(.*?)\]/,
                 /\[img\](.*?)\[\/img\]/,
                 /\[b\](.*?)\[\/b\]/,
-                /(\/\*.*?\*\/)/,
-                /\[emphasis\](.*?)\[\/emphasis\]/,
                 /\[title\](.*?)\[\/title\]/,
-                /\[pagebreak\]/
+                /\[ruby=(.*?)\](.*?)\[\/ruby\]/,
+                /\[pagebreak\]/,
+                /(\/\*.*?\*\/)/,
+                /\\.*/,
+                /\[emphasis\](.*?)\[\/emphasis\]/,
+                /\[s\](.*?)\[\/s\]/
             );
             var rept = new Array(
                 "<p class='aligned' style='text-align:$1'>$2</p>",
@@ -231,10 +234,14 @@
                 "",
                 "<div class='illu'><img class='illu' src='$1'></div>",
                 "<b>$1</b>",
-                "",
-                "<span class=\"emph\">$1</span>",
                 "<p class='title0'>$1</p>",
-                ""//pagebreak
+                "<ruby>$2<rt>$1</rt></ruby>",
+                "",//pagebreak
+                "",//note
+                "",//note
+                "<span class=\"emph\">$1</span>",
+                "<s>$1</s>",
+                
             );
             var r = c;
             var matched = true;
