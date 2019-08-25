@@ -1,0 +1,60 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "AeroNovelTxt",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.aeronoveltxt",
+					"match": "\\b(if|while|for|return)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.aeronoveltxt",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.aeronoveltxt",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"begin": "/\\*",
+					"captures": {
+						"0": {
+							"name": "punctuation.definition.comment.json"
+						}
+					},
+					"end": "\\*/",
+					"name": "comment.block.json"
+				},
+				{
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.comment.json"
+						}
+					},
+					"match": "(///).*$\\n?",
+					"name": "comment.line"
+				}
+			]
+		}
+	},
+	"scopeName": "text.bbcode"
+}
