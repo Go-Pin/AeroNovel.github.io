@@ -13,7 +13,7 @@ class GenTxt
         string[] files = Directory.GetFiles(dir);
         foreach (string f in files)
         {
-            Match m = Regex.Match(Path.GetFileName(f), "([0-9][0-9])(.*?).txt");
+            Match m = Regex.Match(Path.GetFileName(f), "([0-9][0-9])(.*?)txt");
             if (!m.Success) continue;
             string no = m.Groups[1].Value;
             string chaptitle = m.Groups[2].Value;

@@ -6,9 +6,6 @@
 			"include": "#keywords"
 		},
 		{
-			"include": "#strings"
-		},
-		{
 			"include": "#comments"
 		}
 	],
@@ -17,18 +14,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.aeronoveltxt",
-					"match": "\\b(if|while|for|return)\\b"
-				}
-			]
-		},
-		"strings": {
-			"name": "string.quoted.double.aeronoveltxt",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.aeronoveltxt",
-					"match": "\\\\."
+					"match": "\\[(.*?)\\]"
 				}
 			]
 		},
@@ -38,16 +24,16 @@
 					"begin": "/\\*",
 					"captures": {
 						"0": {
-							"name": "punctuation.definition.comment.json"
+							"name": "punctuation.definition.comment.aeronoveltxt"
 						}
 					},
 					"end": "\\*/",
-					"name": "comment.block.json"
+					"name": "comment.block.aeronoveltxt"
 				},
 				{
 					"captures": {
 						"1": {
-							"name": "punctuation.definition.comment.json"
+							"name": "punctuation.definition.comment.aeronoveltxt"
 						}
 					},
 					"match": "(///).*$\\n?",
