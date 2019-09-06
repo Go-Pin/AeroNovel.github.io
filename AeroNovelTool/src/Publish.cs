@@ -12,7 +12,7 @@ public class Publish
         List<string> num=new List<string>();
         foreach (string f in files)
         {
-            Match m = Regex.Match(Path.GetFileName(f), "([0-9][0-9])(.*?)txt");
+            Match m = Regex.Match(Path.GetFileName(f), AeroNovel.filename_reg);
             if (!m.Success) continue;
             contents+=Path.GetFileName(f)+"\r\n";
             string no = m.Groups[1].Value;

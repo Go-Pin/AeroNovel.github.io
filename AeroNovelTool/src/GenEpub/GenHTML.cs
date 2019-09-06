@@ -28,7 +28,8 @@ namespace AeroNovelEpub
                 "/\\*.*?\\*/",
                 "///.*",
                 "\\[emphasis\\](.*?)\\[\\/emphasis\\]",
-                "\\[s\\](.*?)\\[\\/s\\]"
+                "\\[s\\](.*?)\\[\\/s\\]",
+                "\\[i\\](.*?)\\[\\/i\\]"
                 };
 
             var repls = new string[]{
@@ -43,7 +44,8 @@ namespace AeroNovelEpub
                 "",
                 "",
                 "<span class=\"emph\">$1</span>",
-                "<s>$1</s>"
+                "<s>$1</s>",
+                "<i>$1</i>"
                 };
 
             string html = "";

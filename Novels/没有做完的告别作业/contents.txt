@@ -2,7 +2,7 @@
 01info.txt
 05插图.txt
 10目录.txt
-11未完成的告别作业.atxt
+11没有做完的告别作业.atxt
 15一章.atxt
 16二章.atxt
 17三章.atxt

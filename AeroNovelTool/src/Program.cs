@@ -45,4 +45,8 @@ class Program
         }
     }
 }
+public class AeroNovel
+{
+    public static string filename_reg="([0-9][0-9])(.*?)\\.[a]{0,1}txt";
+}
 

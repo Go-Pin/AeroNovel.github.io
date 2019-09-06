@@ -1,5 +1,5 @@
 ﻿  <metadata xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <dc:title>未完成的告别作业</dc:title>
+    <dc:title>没有做完的告别作业</dc:title>
     <dc:creator opf:role="aut">小川 晴央</dc:creator>
     <dc:language>zh-CN</dc:language>
     <dc:contributor>AE</dc:contributor>
