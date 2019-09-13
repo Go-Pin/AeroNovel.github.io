@@ -17,7 +17,7 @@ class GenBbcode
             //string chaptitle = m.Groups[2].Value;
             string[] lines = File.ReadAllLines(f);
             string body = Body(lines);
-            string outpath="bbcode_output\\"+Path.GetFileName(f);
+            string outpath="bbcode_output\\"+Path.GetFileNameWithoutExtension(f)+".txt";
             File.WriteAllText(outpath, body);
             Console.WriteLine(outpath);
         }
@@ -33,7 +33,8 @@ class GenBbcode
                 "\\[title\\](.*?)\\[\\/title\\]",
                 //"\\[ruby=(.*?)\\](.*?)\\[\\/ruby\\]",
                 "\\[pagebreak\\]",
-                "/\\*.*?\\*/"
+                "/\\*.*?\\*/",
+                "///.*"
                 };
 
         var repls = new string[]{
@@ -44,6 +45,7 @@ class GenBbcode
                 //"$1",
                 "[size=5]$1[/size]",
                 //"$2（$1）",
+                "",
                 "",
                 ""
                 };
